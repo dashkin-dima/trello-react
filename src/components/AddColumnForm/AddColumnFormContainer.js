@@ -1,18 +1,13 @@
 import React from "react";
 import AddColumnFormComponent from "./AddColumnFormComponent";
-import { columnsActions } from '../../actions';
+import { columnsActions } from "../../actions";
 import { connect } from "react-redux";
-const AddColumnFormContainer = ({addColumn}) => {
-  return (
-    <div>
-      <AddColumnFormComponent onAddColumn={addColumn} />
-    </div>
-  );
+const AddColumnFormContainer = ({ addColumn }) => {
+  return <AddColumnFormComponent onAddColumn={addColumn} />;
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  addColumn: (title) => dispatch(columnsActions.addColumn(title)),
-});
-
+const mapDispatchToProps = {
+  addColumn: columnsActions.addColumn,
+};
 
 export default connect(null, mapDispatchToProps)(AddColumnFormContainer);
