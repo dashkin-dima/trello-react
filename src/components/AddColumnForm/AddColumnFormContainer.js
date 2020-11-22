@@ -7,7 +7,7 @@ const AddColumnFormContainer = ({ addColumn }) => {
 };
 
 const mapDispatchToProps = {
-  addColumn: columnsActions.addColumn,
+  addColumn: columnsActions.add,
 };
 
 export default connect(null, mapDispatchToProps)(AddColumnFormContainer);

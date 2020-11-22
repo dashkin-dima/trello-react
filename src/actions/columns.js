@@ -1,5 +1,5 @@
 export const columnsActions = {
-  addColumn: (title) => ({
+  add: (title) => ({
     type: "COLUMN:ADD",
     payload: title,
   }),
