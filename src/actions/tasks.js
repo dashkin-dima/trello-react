@@ -7,13 +7,13 @@ export const tasksActions = {
     type: "TASK:DELETE",
     payload: { columnIndex, taskIndex },
   }),
-  move: (columnIndex, taskIndex, droppableColumnIndex, droppableTaskIndex) => ({
+  move: (startColumnIndex, startTaskIndex, endColumnIndex, endTaskIndex) => ({
     type: "TASK:MOVE",
     payload: {
-      columnIndex,
-      taskIndex,
-      droppableColumnIndex,
-      droppableTaskIndex,
+      startColumnIndex,
+      startTaskIndex,
+      endColumnIndex,
+      endTaskIndex,
     },
   }),
   reorder: (columnIndex, startTaskIndex, endTaskIndex) => ({

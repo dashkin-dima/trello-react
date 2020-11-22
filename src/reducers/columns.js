@@ -40,14 +40,29 @@ export const reducerColumns = (state = initialState, { type, payload }) => {
       });
     case "TASK:REORDER":
       let newColumn = state[payload.columnIndex];
-      let start = payload.startTaskIndex;
-      let end = payload.endTaskIndex;
-
-      newColumn.tasks.splice(end, 0, newColumn.tasks.splice(start, 1)[0]);
+      newColumn.tasks.splice(
+        payload.endTaskIndex,
+        0,
+        newColumn.tasks.splice(payload.startTaskIndex, 1)[0]
+      );
 
       return state.map((column, index) =>
         index === payload.columnIndex ? newColumn : column
       );
+    case "TASK:MOVE":
+      let newState = state;
+
+      let moveTask = newState[payload.startColumnIndex].tasks.splice(
+        payload.startTaskIndex,
+        1
+      );
+      newState[payload.endColumnIndex].tasks.splice(
+        payload.endTaskIndex,
+        0,
+        moveTask
+      );
+
+      return newState;
     default:
       return state;
   }
