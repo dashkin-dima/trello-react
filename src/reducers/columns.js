@@ -19,12 +19,12 @@ const initialState = [
 export const reducerColumns = (state = initialState, { type, payload }) => {
   switch (type) {
     case "COLUMN:ADD":
-      return [...state, { title: payload.title || "title", tasks: [] }];
+      return [...state, { title: payload.title, tasks: [] }];
     case "TASK:ADD":
       return state.map((column, index) => {
         if (index === payload.columnIndex)
           return { ...column, tasks: [...column.tasks, payload.task] };
-        return column;
+        return column; 
       });
     case "TASK:DELETE":
       return state.map((column, index) => {

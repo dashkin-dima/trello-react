@@ -24,7 +24,19 @@
 
   }
 
-  &__button-add-task {
+  &__button-add-task:before {
+    content: "";
+    margin-right: 7px;
+    display: inline-block;
+    vertical-align: baseline;
+    width: 14px;
+    height: 14px;
+    background-image: url("../../assets/plus.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
+  &__button-add-task {
+    margin: 5px;
   }
 }

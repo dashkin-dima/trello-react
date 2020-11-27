@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 
 import Task from "../Task";
 import "./Column.scss";
+
 const ColumnComponent = ({
   title,
   tasks,
@@ -10,8 +11,13 @@ const ColumnComponent = ({
   columnIndex,
   provided,
 }) => {
+  const [showForm, setShowForm] = useState(false);
+  const [valueInput, setValueInput] = useState("");
+
   const addTask = () => {
-    onAddTask(columnIndex, "task-1");
+    onAddTask(columnIndex, valueInput);
+    setValueInput("");
+    setShowForm(false);
   };
   return (
     <div
@@ -31,9 +37,31 @@ const ColumnComponent = ({
           />
         ))}
       </div>
-      <div className="column__button-add-task" onClick={addTask}>
-        ADD
-      </div>
+      {showForm ? (
+        <div className="column__add-form add-form">
+          <textarea
+            className="add-form__input"
+            type="text"
+            onChange={(e) => setValueInput(e.target.value)}
+          />
+          <div className="add-form__button-add" onClick={addTask}>
+            add
+          </div>
+          <div
+            className="add-form__button-cancel"
+            onClick={() => setShowForm(false)}
+          >
+            cancel
+          </div>
+        </div>
+      ) : (
+        <div
+          className="column__button-add-task"
+          onClick={() => setShowForm(true)}
+        >
+          ADD
+        </div>
+      )}
     </div>
   );
 };
