@@ -1,4 +1,22 @@
+body {
+  margin: 0;
+  background-image: url("./assets/background.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+* {
+  outline: none;
+}
+
 .app {
-  display: flex;
+  white-space: nowrap;
+}
+
+.columns {
+  overflow: hidden;
+  max-height: 100%;
   padding: 8px 12px;
+  display: flex;
 }

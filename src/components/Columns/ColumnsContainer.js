@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { v4 as uuid } from "uuid";
 
+import AddColumnForm from '../AddColumnForm'
 import ColumnComponent from "./ColumnComponent";
 import { tasksActions } from "../../actions";
 
@@ -39,6 +40,7 @@ const ColumnsContainer = ({ columns, addTask, reorderTask, moveTask }) => {
           </Droppable>
         ))}
       </DragDropContext>
+      <AddColumnForm/>
     </Fragment>
   );
 };

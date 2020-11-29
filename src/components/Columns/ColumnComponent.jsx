@@ -3,6 +3,7 @@ import { v4 as uuid } from "uuid";
 
 import Task from "../Task";
 import "./Column.scss";
+import deleteLogo from "../../assets/x.svg";
 
 const ColumnComponent = ({
   title,
@@ -14,10 +15,15 @@ const ColumnComponent = ({
   const [showForm, setShowForm] = useState(false);
   const [valueInput, setValueInput] = useState("");
 
+  const deleteColumn = () => {};
   const addTask = () => {
-    onAddTask(columnIndex, valueInput);
-    setValueInput("");
-    setShowForm(false);
+    if (valueInput) {
+      onAddTask(columnIndex, valueInput);
+      setValueInput("");
+      setShowForm(false);
+    } else {
+      alert("enter task");
+    }
   };
   return (
     <div
@@ -25,8 +31,16 @@ const ColumnComponent = ({
       {...provided.droppableProps}
       className="column"
     >
-      <div className="column__header">{title}</div>
-      <div className="column__list-task">
+      <div className="column__header">
+        {title}{" "}
+        <img
+          className="column__button-delete"
+          src={deleteLogo}
+          onClick={deleteColumn}
+          alt="delete"
+        />
+      </div>
+      <div className="column__list-tasks">
         {tasks.map((task, taskIndex) => (
           <Task
             className="column__task"
@@ -38,28 +52,30 @@ const ColumnComponent = ({
         ))}
       </div>
       {showForm ? (
-        <div className="column__add-form add-form">
+        <div className="column__add-form">
           <textarea
-            className="add-form__input"
+            className="column__input"
             type="text"
             onChange={(e) => setValueInput(e.target.value)}
           />
-          <div className="add-form__button-add" onClick={addTask}>
-            add
-          </div>
-          <div
-            className="add-form__button-cancel"
-            onClick={() => setShowForm(false)}
-          >
-            cancel
+          <div className="column__buttons-form">
+            <div className="column__button-add" onClick={addTask}>
+              add task
+            </div>
+            <div
+              className="column__button-cancel"
+              onClick={() => setShowForm(false)}
+            >
+              cancel
+            </div>
           </div>
         </div>
       ) : (
         <div
-          className="column__button-add-task"
+          className="column__button-show-form"
           onClick={() => setShowForm(true)}
         >
-          ADD
+          add task
         </div>
       )}
     </div>

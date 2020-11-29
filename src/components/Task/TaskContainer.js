@@ -9,7 +9,6 @@ const TaskContainer = ({
   text,
   columnIndex,
   taskIndex,
-  className,
   deleteTask,
 }) => {
   return (
@@ -21,7 +20,6 @@ const TaskContainer = ({
       {(provided, snapshot) => (
         <TaskComponent
           provided={provided}
-          className={className}
           text={text}
           columnIndex={columnIndex}
           taskIndex={taskIndex}

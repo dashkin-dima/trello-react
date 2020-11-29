@@ -1,34 +1,42 @@
 import React, { useState } from "react";
 
+import "./AddColumnForm.scss";
+
 const AddColumnFormComponent = ({ onAddColumn }) => {
   const [showForm, setShowForm] = useState(false);
   const [valueInput, setValueInput] = useState("");
 
   const addColumn = () => {
-    onAddColumn(valueInput);
-    setValueInput("");
-    setShowForm(false);
+    if (valueInput) {
+      onAddColumn(valueInput);
+      setValueInput("");
+      setShowForm(false);
+    } else {
+      alert("enter column");
+    }
   };
   return showForm ? (
-    <div className="add-column-form">
+    <div className="column">
       <textarea
-        className="add-column-form__input"
+        className="column__input"
         type="text"
         onChange={(e) => setValueInput(e.target.value)}
       />
-      <div className="add-column-form__button-add" onClick={addColumn}>
-        add
-      </div>
-      <div
-        className="add-column-form__button-cancel"
-        onClick={() => setShowForm(false)}
-      >
-        cancel
+      <div className="column__buttons-form">
+        <div className="column__button-add" onClick={addColumn}>
+          add column
+        </div>
+        <div
+          className="column__button-cancel"
+          onClick={() => setShowForm(false)}
+        >
+          cancel
+        </div>
       </div>
     </div>
   ) : (
-    <div className="add-column-form__button-show" onClick={() => setShowForm(true)}>
-      ADD
+    <div className="column" onClick={() => setShowForm(true)}>
+      <div className="column__button-show-form">add column</div>
     </div>
   );
 };

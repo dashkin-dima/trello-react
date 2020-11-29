@@ -1,42 +1,99 @@
 .column {
-  min-width: 272px;
+  width: 272px;
   margin: 0 4px;
   height: 100%;
-  
+
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
   background-color: #ebecf0;
   border-radius: 3px;
 
   &__header {
-    padding: 4px 8px;
-
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    line-height: 24px;
     font-weight: 500;
+  }
+
+  &__button-delete {
     cursor: pointer;
   }
 
-  &__list-task {
-    padding: 0 4px;
-    margin: 0 4px;
+  &__list-tasks {
+    margin: 0 8px;
     overflow-y: auto;
     overflow-x: hidden;
   }
 
   &__task {
-
+    margin: 50px;
   }
 
-  &__button-add-task:before {
-    content: "";
-    margin-right: 7px;
-    display: inline-block;
-    vertical-align: baseline;
-    width: 14px;
-    height: 14px;
-    background-image: url("../../assets/plus.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
+  &__input {
+    margin: 10px 8px;
+    width: calc(100% - 20px); 
+    max-height: 162px;
+    min-height: 54px;
+    
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(9,30,66,.25);
+    border: none;
+    resize: none;
   }
 
-  &__button-add-task {
-    margin: 5px;
+  &__buttons-form {
+    margin: 0 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__button-add {
+    padding: 6px 12px;
+    background-color: #5aac44;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:hover {
+      background-color:  #6acc4f;
+    }
+  }
+
+  &__button-cancel {
+    padding: 6px 12px;
+    background-color: #c72e2e;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:hover {
+      background-color:  #e21f1f;
+    }
+  }
+
+  &__button-show-form {
+    color: #6b808c;
+    padding: 5px;
+
+    cursor: pointer;
+    &:before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      margin-right: 7px;
+      display: inline-block;
+      vertical-align: baseline;
+      
+      background-image: url("../../assets/plus.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    &:hover {
+      background-color: rgb(0, 0, 0, 0.3);
+      color: #424e55;
+    }
   }
 }

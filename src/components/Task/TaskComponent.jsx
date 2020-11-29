@@ -1,5 +1,6 @@
 import React from "react";
 import "./Task.scss";
+import deleteLogo from "../../assets/x.svg";
 
 const TaskComponent = ({
   text,
@@ -17,12 +18,15 @@ const TaskComponent = ({
       ref={provided.innerRef}
       {...provided.draggableProps}
       {...provided.dragHandleProps}
-      className={`${className} task`}
+      className={"task"}
     >
       <div className="task__text">{text}</div>
-      <div className="task__button-delete" onClick={deleteTask}>
-        delete
-      </div>
+      <img
+        className="task__button-delete"
+        src={deleteLogo}
+        onClick={deleteTask}
+        alt="delete"
+      />
     </div>
   );
 };
