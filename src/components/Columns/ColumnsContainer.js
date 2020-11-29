@@ -3,11 +3,17 @@ import { connect } from "react-redux";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { v4 as uuid } from "uuid";
 
-import AddColumnForm from '../AddColumnForm'
+import AddColumnForm from "../AddColumnForm";
 import ColumnComponent from "./ColumnComponent";
-import { tasksActions } from "../../actions";
+import { tasksActions, columnsActions } from "../../actions";
 
-const ColumnsContainer = ({ columns, addTask, reorderTask, moveTask }) => {
+const ColumnsContainer = ({
+  columns,
+  addTask,
+  reorderTask,
+  moveTask,
+  deleteColumn,
+}) => {
   const onDragEnd = (result) => {
     const { source, destination } = result;
 
@@ -35,12 +41,13 @@ const ColumnsContainer = ({ columns, addTask, reorderTask, moveTask }) => {
                 {...column}
                 columnIndex={index}
                 onAddTask={addTask}
+                onDeleteColumn={deleteColumn}
               />
             )}
           </Droppable>
         ))}
       </DragDropContext>
-      <AddColumnForm/>
+      <AddColumnForm />
     </Fragment>
   );
 };
@@ -53,6 +60,7 @@ const mapDispatchToProps = {
   addTask: tasksActions.add,
   reorderTask: tasksActions.reorder,
   moveTask: tasksActions.move,
+  deleteColumn: columnsActions.delete,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ColumnsContainer);

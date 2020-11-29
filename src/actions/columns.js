@@ -3,5 +3,8 @@ export const columnsActions = {
     type: "COLUMN:ADD",
     payload: { title },
   }),
+  delete: (columnIndex) => ({
+    type: "COLUMN:DELETE",
+    payload: { columnIndex },
+  }),
 };
-

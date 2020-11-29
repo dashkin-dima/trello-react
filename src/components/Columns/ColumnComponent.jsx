@@ -9,13 +9,16 @@ const ColumnComponent = ({
   title,
   tasks,
   onAddTask,
+  onDeleteColumn,
   columnIndex,
   provided,
 }) => {
   const [showForm, setShowForm] = useState(false);
   const [valueInput, setValueInput] = useState("");
 
-  const deleteColumn = () => {};
+  const deleteColumn = () => {
+    onDeleteColumn(columnIndex);
+  };
   const addTask = () => {
     if (valueInput) {
       onAddTask(columnIndex, valueInput);
